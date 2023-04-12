@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-
+import portalReducer from "./portal";
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    portal: portalReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

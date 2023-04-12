@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import React from "react";
 import MenuBar from "../../components/MenuBar";
 import Navbar from "../../components/Navbar";
 import ClientsList from "./ClientsList";
