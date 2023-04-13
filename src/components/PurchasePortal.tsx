@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import { Box, TextField, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
-import { removePurchasePortal } from "../../app/portal";
+import { removePurchasePortal } from "../../app/portal.slice";
 const PurchasePortal = () => {
   const dispatch = useDispatch();
   return ReactDOM.createPortal(
@@ -59,7 +59,7 @@ const PurchasePortal = () => {
         </form>
       </Box>
     </Box>,
-    document.getElementById("new-client") as HTMLElement
+    document.getElementById("new-purchuse") as HTMLElement
   );
 };
 

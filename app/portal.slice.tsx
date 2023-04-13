@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-export interface CounterState {
+export interface portalState {
   isClientPortal: Boolean;
   isPurchasePortal: Boolean;
 }
-const initialState: CounterState = {
+const initialState: portalState = {
   isClientPortal: false,
   isPurchasePortal: false,
 };
 
-export const counterSlice = createSlice({
+export const portalSlice = createSlice({
   name: "portal",
   initialState,
   reducers: {
@@ -33,5 +32,5 @@ export const {
   removePurchasePortal,
   addClientPortal,
   removeClientPortal,
-} = counterSlice.actions;
-export default counterSlice.reducer;
+} = portalSlice.actions;
+export default portalSlice.reducer;

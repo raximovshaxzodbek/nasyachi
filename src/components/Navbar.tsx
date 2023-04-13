@@ -3,7 +3,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addClientPortal, addPurchasePortal } from "../../app/portal";
+import { addClientPortal, addPurchasePortal } from "../../app/portal.slice";
 const Navbar = () => {
   const dispatch = useDispatch();
   return (

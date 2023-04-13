@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import { Box, TextField, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
-import { removeClientPortal } from "../../app/portal";
+import { removeClientPortal } from "../../app/portal.slice";
 const ClientPortal = () => {
   const dispatch = useDispatch();
   return ReactDOM.createPortal(
