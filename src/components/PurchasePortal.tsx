@@ -59,7 +59,7 @@ const PurchasePortal = () => {
         </form>
       </Box>
     </Box>,
-    document.getElementById("new-purchuse") as HTMLElement
+    document.getElementById("new-purchase") as HTMLElement
   );
 };
 

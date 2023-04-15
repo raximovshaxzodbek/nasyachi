@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { handlerLogin } from "../../app/login.slice";
-import { RootState } from "../../app/store";
 const Login = () => {
-  const [user, setUsername] = useState("");
-  const [pass, setPassword] = useState("");
+  const [username, setUsername] = useState<String | any>("");
+  const [password, setPassword] = useState<String | any>("");
+  const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
   const dispatch = useDispatch();
-  const { isLoggedIn, username, password } = useSelector(
-    (state: RootState) => state.login
-  );
   const handlerSubmit = () => {
-    if (user && pass) {
-      dispatch(handlerLogin({ username:user, password:pass }));
+    if (username === "azamjon" && password === "1") {
+      dispatch(handlerLogin({ username, password }));
+      setIsLoggedIn(true);
       setUsername("");
       setPassword("");
-      console.log(isLoggedIn);
+    } else {
+      setIsLoggedIn(false);
     }
   };
   useEffect(() => {
@@ -34,28 +33,30 @@ const Login = () => {
           type="text"
           placeholder="Username"
           name="username"
-          value={user}
+          value={username}
           className="w-[300px] rounded-xl bg-gray-200 px-3 py-2"
           onChange={(event) => setUsername(event.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          value={pass}
+          value={password}
           className="w-[300px] rounded-xl bg-gray-200 px-3 py-2"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <Button
+        <Link
+          to={username === "azamjon" && password === "1" ? "/dashboard" : "/"}
           onClick={handlerSubmit}
-          type="submit"
-          variant="contained"
-          style={{ borderRadius: "10px" }}
-          className="w-[300px] cursor-pointer rounded-xl bg-blue-500 px-3 py-2 text-center text-white"
         >
-          <Link to={isLoggedIn ? "/dashboard" : "/"}>
+          <Button
+            type="submit"
+            variant="contained"
+            style={{ borderRadius: "10px" }}
+            className="w-[300px] cursor-pointer rounded-xl bg-blue-500 px-3 py-2 text-center text-white"
+          >
             {isLoggedIn ? "Loading..." : "Login"}
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </form>
     </div>
   );

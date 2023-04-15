@@ -8,6 +8,7 @@ const App = () => {
   const { isClientPortal, isPurchasePortal } = useSelector(
     (state: RootState) => state.portal
   );
+
   return (
     <Box className="p-3">
       {isClientPortal ? <ClientPortal /> : null}
