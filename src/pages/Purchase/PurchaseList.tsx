@@ -23,9 +23,7 @@ const PurchaseList = () => {
         Axios.get(`/customer/${purchase.customer}/`, {
           headers,
         })
-          .then((customer) => {
-            console.log(customer.data.name);
-          })
+          .then((customer) => {})
 
           .catch((err) => {
             console.error(err);
@@ -34,7 +32,7 @@ const PurchaseList = () => {
     };
 
     getPurchases();
-  }, []);
+  }, [purchases]);
 
   return (
     <div className="mt-[15px] flex h-[calc(100vh-120px)] w-[calc(100vw-340px)] flex-col items-center justify-start overflow-auto rounded-xl p-4 py-6 shadow-lg shadow-gray-400">

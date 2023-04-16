@@ -3,8 +3,29 @@ import { Box, TextField, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
 import { removeClientPortal } from "../../app/portal.slice";
+import { useState } from "react";
+import { Axios } from "../../api/Axios";
+import { headers } from "./headers";
 const ClientPortal = () => {
+  const [name, setName] = useState<String>("");
+  const [phone_num, setPhone_num] = useState<String>("");
+  const [passport_num, setPassport_num] = useState<String>("");
   const dispatch = useDispatch();
+  const handeNewClient = async () => {
+    dispatch(removeClientPortal());
+    await Axios.post(
+      "/customer/",
+      {
+        name,
+        passport_num,
+        phone_num,
+      },
+      { headers }
+    );
+    setName("");
+    setPhone_num("");
+    setPassport_num("");
+  };
   return ReactDOM.createPortal(
     <Box
       className={
@@ -29,17 +50,31 @@ const ClientPortal = () => {
           className="flex flex-col gap-3"
           onSubmit={(event) => event.preventDefault()}
         >
-          <TextField label="Name" variant="outlined" />
-          <TextField label="Pasport Seriya" variant="outlined" />
-          <TextField label="Contact" variant="outlined" />
-          <TextField label="Plastik Karta Raqami" variant="outlined" />
-          <Button
-            type={"submit"}
-            variant="contained"
-            onClick={() => {
-              dispatch(removeClientPortal());
+          <TextField
+            label="Name"
+            value={name}
+            onChange={(event) => {
+              setName(event.target.value);
             }}
-          >
+            variant="outlined"
+          />
+          <TextField
+            label="Pasport Seriya"
+            value={passport_num}
+            onChange={(event) => {
+              setPassport_num(event.target.value);
+            }}
+            variant="outlined"
+          />
+          <TextField
+            label="Contact"
+            value={phone_num}
+            onChange={(event) => {
+              setPhone_num(event.target.value);
+            }}
+            variant="outlined"
+          />
+          <Button type={"submit"} variant="contained" onClick={handeNewClient}>
             Add Client
           </Button>
         </form>
