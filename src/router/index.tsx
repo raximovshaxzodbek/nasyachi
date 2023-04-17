@@ -6,6 +6,7 @@ import {
   Clients,
   OnePurchase,
   OneClients,
+  Category,
 } from "../imports";
 
 const RoutesPage = () => {
@@ -17,6 +18,7 @@ const RoutesPage = () => {
       <Route path="/purchases/:id" element={<OnePurchase />} />
       <Route path="/clients" element={<Clients />} />
       <Route path="/clients/:id" element={<OneClients />} />
+      <Route path="/category" element={<Category />} />
     </Routes>
   );
 };

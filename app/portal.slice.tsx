@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface portalState {
   isClientPortal: Boolean;
   isPurchasePortal: Boolean;
+  isCategoryPortal: Boolean;
 }
 const initialState: portalState = {
   isClientPortal: false,
   isPurchasePortal: false,
+  isCategoryPortal: false,
 };
 
 export const portalSlice = createSlice({
@@ -24,6 +26,12 @@ export const portalSlice = createSlice({
     removeClientPortal: (state) => {
       state.isClientPortal = false;
     },
+    addCategoryPortal: (state) => {
+      state.isCategoryPortal = true;
+    },
+    removeCategoryPortal: (state) => {
+      state.isCategoryPortal = false;
+    },
   },
 });
 
@@ -32,5 +40,7 @@ export const {
   removePurchasePortal,
   addClientPortal,
   removeClientPortal,
+  addCategoryPortal,
+  removeCategoryPortal,
 } = portalSlice.actions;
 export default portalSlice.reducer;

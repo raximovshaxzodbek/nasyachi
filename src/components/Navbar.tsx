@@ -3,7 +3,11 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addClientPortal, addPurchasePortal } from "../../app/portal.slice";
+import {
+  addCategoryPortal,
+  addClientPortal,
+  addPurchasePortal,
+} from "../../app/portal.slice";
 const Navbar = () => {
   const dispatch = useDispatch();
   return (
@@ -19,6 +23,15 @@ const Navbar = () => {
         alignItems={"center"}
         gap={4}
       >
+        <Button
+          type="button"
+          variant="contained"
+          onClick={() => {
+            dispatch(addCategoryPortal());
+          }}
+        >
+          New Category
+        </Button>
         <Button
           type="button"
           variant="contained"
