@@ -13,8 +13,8 @@ const Navbar = () => {
   return (
     <nav className="flex min-h-[80px] w-full flex-wrap items-center justify-between rounded-b-lg px-10 shadow-md shadow-gray-400">
       <Box>
-        <Link to={"/user"} className="text-2xl font-semibold">
-          Logo
+        <Link to={"/dashboard"} className="text-2xl font-semibold">
+          Nasyachi Uz
         </Link>
       </Box>
       <Box
@@ -50,13 +50,13 @@ const Navbar = () => {
         >
           New Purchase
         </Button>
-        <Box className="group relative cursor-pointer">
+        {/* <Box className="group relative cursor-pointer">
           <AccountCircleIcon color="primary" fontSize="large" />
           <Box className="user absolute right-0 top-full flex min-h-[40px] min-w-[200px] scale-0 flex-col gap-3 rounded-xl bg-white p-3 shadow-xl shadow-gray-400 duration-300 group-hover:scale-100">
             <h4 className="hover:text-blue-500">webshohdev@gmail.com</h4>
             <ExitToAppIcon fontSize="medium" className="hover:text-red-500" />
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </nav>
   );

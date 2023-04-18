@@ -112,55 +112,41 @@ const OnePurchase = () => {
           )}
           {paymentsLoading ? (
             <>
-              <h2 className="my-4 text-3xl font-semibold">
-                To'lov Ma'lumotlari
-              </h2>
               {payments.length > 0 ? (
-                <>
-                  <Box className="flex h-[200px] w-[80%] flex-col flex-wrap justify-start py-3">
-                    {payments.map((payment: any, id: any) => {
-                      return (
-                        <p key={payment.id} className="text-lg font-semibold">
-                          {id + 1} - to'lov
-                        </p>
-                      );
-                    })}
-                  </Box>
-                  <Box className="w-[80%]">
-                    <table className="min-h-[100px] w-full rounded-lg bg-gray-400/40 text-center">
-                      <caption className="my-2 w-[200px] rounded-xl bg-gray-300 px-3 py-2">
-                        To'lov tarixi
-                      </caption>
-                      <thead>
-                        <tr className="h-[40px] border border-black">
-                          <th>Sana</th>
-                          <th>Summasi</th>
-                          <th>Nechinchi to'lov</th>
-                          <th>Comment</th>
+                <Box className="w-[80%]">
+                  <table className="my-5 min-h-[100px] w-full rounded-lg bg-gray-400/40 text-center">
+                    <caption className="my-2 w-[200px] rounded-xl bg-gray-300 px-3 py-2 text-2xl font-bold">
+                      To'lov tarixi
+                    </caption>
+                    <thead>
+                      <tr className="h-[40px] border border-black">
+                        <th>Sana</th>
+                        <th>Summasi</th>
+                        <th>Nechinchi to'lov</th>
+                        <th>Comment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {payments.map((payment: any, id: any) => (
+                        <tr className="border border-black" key={payment.id}>
+                          <td>
+                            {new Date(payment.date).getFullYear()}.
+                            {new Date(payment.date).getMonth() > 9
+                              ? new Date(payment.date).getMonth()
+                              : "0" + new Date(payment.date).getMonth()}
+                            .
+                            {new Date(payment.date).getDate() > 9
+                              ? new Date(payment.date).getDate()
+                              : "0" + new Date(payment.date).getDate()}
+                          </td>
+                          <td>{payment.money}so'm</td>
+                          <td>{id + 1} - to'lov</td>
+                          <td className="w-[300px]">{payment.description}</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {payments.map((payment: any, id: any) => (
-                          <tr className="border border-black" key={payment.id}>
-                            <td>
-                              {new Date(payment.date).getFullYear()}.
-                              {new Date(payment.date).getMonth() > 9
-                                ? new Date(payment.date).getMonth()
-                                : "0" + new Date(payment.date).getMonth()}
-                              .
-                              {new Date(payment.date).getDate() > 9
-                                ? new Date(payment.date).getDate()
-                                : "0" + new Date(payment.date).getDate()}
-                            </td>
-                            <td>{payment.money}so'm</td>
-                            <td>{id + 1} - to'lov</td>
-                            <td className="w-[300px]">{payment.description}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </Box>
-                </>
+                      ))}
+                    </tbody>
+                  </table>
+                </Box>
               ) : (
                 <h2 className="text-2xl font-semibold text-red-500">
                   To'lov tarixi mavjud emas!!!
